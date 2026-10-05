@@ -2,97 +2,82 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NXS Inject | Verificado</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#7c3aed">
+  <title>NXS Inject | Código Gerado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.png">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    :root { --purple: #a855f7; --purple-dark: #7c3aed; --purple-light: #c084fc; --bg: #05050a; }
+    html, body { height: 100%; overflow-x: hidden; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      min-height: 100vh;
-      overflow: hidden;
-      background: #05050a;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      background: var(--bg); color: #fff;
+      min-height: 100vh; min-height: 100dvh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; position: relative;
     }
-
     .banner-bg {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80');
-      background-size: cover;
-      background-position: center;
-      filter: blur(8px) brightness(0.35) saturate(1.2);
-      transform: scale(1.1);
-      z-index: 0;
+      background-size: cover; background-position: center;
+      filter: blur(10px) brightness(0.3) saturate(1.3);
+      transform: scale(1.15); z-index: 0;
     }
     .banner-overlay {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(5,5,10,0.85) 70%, #05050a 100%);
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(circle at 50% 50%, transparent 0%, rgba(5,5,10,0.9) 65%, #05050a 100%),
+        linear-gradient(180deg, rgba(124,58,237,0.15) 0%, transparent 50%, rgba(5,5,10,0.7) 100%);
       z-index: 1;
     }
-
     .orb {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 2;
-      filter: blur(40px);
-      opacity: 0.6;
-      animation: float 12s ease-in-out infinite;
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 2;
+      filter: blur(50px); opacity: 0.55; animation: float 14s ease-in-out infinite;
     }
-    .orb-1 { width: 300px; height: 300px; background: radial-gradient(circle, #a855f7, transparent 70%); top: 10%; left: 15%; }
-    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #7c3aed, transparent 70%); bottom: 5%; right: 10%; animation-delay: -4s; }
-    .orb-3 { width: 200px; height: 200px; background: radial-gradient(circle, #c084fc, transparent 70%); top: 60%; left: 5%; animation-delay: -8s; }
-    .orb-4 { width: 250px; height: 250px; background: radial-gradient(circle, #8b5cf6, transparent 70%); top: 20%; right: 20%; animation-delay: -2s; }
-
+    .orb-1 { width: 280px; height: 280px; background: radial-gradient(circle, #a855f7, transparent 70%); top: 8%; left: 10%; }
+    .orb-2 { width: 360px; height: 360px; background: radial-gradient(circle, #7c3aed, transparent 70%); bottom: 8%; right: 8%; animation-delay: -4s; }
+    .orb-3 { width: 200px; height: 200px; background: radial-gradient(circle, #c084fc, transparent 70%); top: 60%; left: 3%; animation-delay: -8s; }
+    .orb-4 { width: 240px; height: 240px; background: radial-gradient(circle, #8b5cf6, transparent 70%); top: 15%; right: 15%; animation-delay: -2s; }
     @keyframes float {
       0%, 100% { transform: translate(0, 0) scale(1); }
-      33%      { transform: translate(40px, -30px) scale(1.1); }
-      66%      { transform: translate(-30px, 40px) scale(0.95); }
+      33%      { transform: translate(35px, -25px) scale(1.08); }
+      66%      { transform: translate(-25px, 35px) scale(0.95); }
     }
-
     .card {
-      position: relative;
-      z-index: 10;
-      background: rgba(20, 15, 25, 0.65);
-      border: 1px solid rgba(168, 85, 247, 0.5);
+      position: relative; z-index: 10;
+      background: rgba(15, 15, 25, 0.72);
+      border: 1px solid rgba(168, 85, 247, 0.4);
       border-radius: 24px;
-      padding: 56px 48px;
-      max-width: 460px;
-      width: 90%;
+      padding: 48px 40px;
+      max-width: 460px; width: 100%;
       text-align: center;
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       box-shadow:
-        0 0 0 1px rgba(168, 85, 247, 0.15),
-        0 20px 60px rgba(168, 85, 247, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        0 0 0 1px rgba(168, 85, 247, 0.08),
+        0 24px 64px rgba(124, 58, 237, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
       animation: cardIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     @keyframes cardIn {
-      0%   { opacity: 0; transform: translateY(30px) scale(0.95); }
+      0%   { opacity: 0; transform: translateY(30px) scale(0.96); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
-
-    .check {
-      width: 96px; height: 96px;
-      margin: 0 auto 28px;
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--purple), transparent);
+    }
+    .check-icon {
+      width: 80px; height: 80px; margin: 0 auto 24px;
       background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      font-weight: 800;
-      color: #fff;
-      box-shadow:
-        0 10px 40px rgba(168, 85, 247, 0.6),
-        0 0 60px rgba(168, 85, 247, 0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 42px; font-weight: 800; color: #fff;
+      box-shadow: 0 10px 40px rgba(168, 85, 247, 0.6), 0 0 60px rgba(168, 85, 247, 0.4);
       position: relative;
       animation: pop 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -101,11 +86,8 @@
       60%  { transform: scale(1.15); }
       100% { transform: scale(1); }
     }
-    .check::after {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
+    .check-icon::after {
+      content: ''; position: absolute; inset: -6px; border-radius: 50%;
       border: 2px solid rgba(168, 85, 247, 0.5);
       animation: ring 2s ease-out infinite;
     }
@@ -113,33 +95,87 @@
       0%   { transform: scale(1); opacity: 1; }
       100% { transform: scale(1.5); opacity: 0; }
     }
-
     h1 {
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 14px;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #fff 30%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 26px; font-weight: 900; margin-bottom: 10px; letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff 30%, var(--purple-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
-    p {
-      color: #a0a0b8;
-      font-size: 15px;
-      line-height: 1.7;
+    .sub { color: #a0a0b8; font-size: 14px; line-height: 1.6; margin-bottom: 28px; }
+    .code-box {
+      background: rgba(124, 58, 237, 0.15);
+      border: 2px dashed rgba(168, 85, 247, 0.6);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: all;
+      -webkit-user-select: all;
     }
-    p strong { color: #c084fc; font-weight: 600; }
-
-    .footer {
-      margin-top: 28px;
-      font-size: 12px;
-      color: #55556a;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .code-box:hover { background: rgba(124, 58, 237, 0.25); }
+    .code-box:active { transform: scale(0.98); }
+    .code-label {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple-light); font-weight: 700; margin-bottom: 8px;
     }
-    .footer span { color: #a855f7; font-weight: 600; }
+    .code-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px; font-weight: 800;
+      letter-spacing: 3px; color: #fff;
+      text-shadow: 0 0 20px rgba(168, 85, 247, 0.8), 0 0 40px rgba(168, 85, 247, 0.4);
+    }
+    .code-hint { font-size: 11px; color: #666680; margin-top: 8px; }
+    .steps {
+      text-align: left;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(168, 85, 247, 0.15);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+    .step {
+      display: flex; align-items: flex-start; gap: 12px;
+      color: #c0c0d0; font-size: 13px; line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .step:last-child { margin-bottom: 0; }
+    .step-num {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; color: #fff;
+    }
+    .copy-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 16px 24px;
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      color: #fff; border: none; border-radius: 14px;
+      font-size: 15px; font-weight: 700; font-family: inherit;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      -webkit-user-select: none; user-select: none;
+    }
+    .copy-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(124, 58, 237, 0.6); }
+    .copy-btn:active { transform: translateY(0) scale(0.98); }
+    .copy-btn.copied { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+    .footer { margin-top: 24px; font-size: 11px; color: #55556a; letter-spacing: 1px; text-transform: uppercase; }
+    .footer span { color: var(--purple); font-weight: 700; }
+    @media (max-width: 480px) {
+      body { padding: 16px; }
+      .card { padding: 36px 22px; border-radius: 20px; }
+      h1 { font-size: 22px; }
+      .code-value { font-size: 22px; letter-spacing: 2px; }
+      .check-icon { width: 68px; height: 68px; font-size: 36px; margin-bottom: 20px; }
+      .orb-1, .orb-2, .orb-3, .orb-4 { filter: blur(60px); }
+    }
+    @media (max-width: 360px) {
+      .card { padding: 30px 18px; }
+      .code-value { font-size: 18px; letter-spacing: 1.5px; }
+    }
   </style>
 </head>
 <body>
@@ -151,14 +187,60 @@
   <div class="orb orb-4"></div>
 
   <div class="card">
-    <div class="check">✓</div>
-    <h1>Verificado!</h1>
-    <p>
+    <div class="check-icon">✓</div>
+    <h1>Código Gerado!</h1>
+    <p class="sub">
       Sua conta foi autorizada com sucesso.<br>
-      O cargo de verificado já foi aplicado no servidor.<br><br>
-      <strong>Pode fechar esta aba e voltar ao Discord.</strong>
+      Copie o código abaixo e cole no Discord.
     </p>
+
+    <div class="code-box" onclick="copiarCodigo()">
+      <div class="code-label">Seu código</div>
+      <div class="code-value" id="codigo">NXS-XXXXXX</div>
+      <div class="code-hint">Clique para copiar</div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>Volte ao Discord</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>Clique em <strong>Inserir Código</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>Cole o código no modal</div>
+      </div>
+    </div>
+
+    <button class="copy-btn" id="btnCopiar" onclick="copiarCodigo()">
+      📋 Copiar Código
+    </button>
+
     <p class="footer">NXS Inject <span>©</span> 2026</p>
   </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const codigo = params.get('code') || 'NXS-XXXXXX';
+    document.getElementById('codigo').textContent = codigo;
+
+    function copiarCodigo() {
+      navigator.clipboard.writeText(codigo).then(() => {
+        const btn = document.getElementById('btnCopiar');
+        const original = btn.innerHTML;
+        btn.innerHTML = '✅ Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = original;
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        alert('Copie manualmente: ' + codigo);
+      });
+    }
+  </script>
 </body>
 </html>
