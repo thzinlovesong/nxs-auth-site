@@ -2,263 +2,182 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#7c3aed">
   <title>NXS Inject | Verificação</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.png">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    :root { --purple: #a855f7; --purple-dark: #7c3aed; --purple-light: #c084fc; --bg: #05050a; }
+    html, body { height: 100%; overflow-x: hidden; }
     body {
-      font-family: 'Inter', system-ui, sans-serif;
-      min-height: 100vh;
-      overflow: hidden;
-      background: #05050a;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg); color: #fff;
+      min-height: 100vh; min-height: 100dvh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; position: relative;
     }
-
-    /* ===== Banner de fundo ===== */
     .banner-bg {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80');
-      background-size: cover;
-      background-position: center;
-      filter: blur(8px) brightness(0.35) saturate(1.2);
-      transform: scale(1.1);
-      z-index: 0;
+      background-size: cover; background-position: center;
+      filter: blur(10px) brightness(0.3) saturate(1.3);
+      transform: scale(1.15); z-index: 0;
     }
     .banner-overlay {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(5,5,10,0.85) 70%, #05050a 100%);
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(circle at 50% 50%, transparent 0%, rgba(5,5,10,0.9) 65%, #05050a 100%),
+        linear-gradient(180deg, rgba(124,58,237,0.15) 0%, transparent 50%, rgba(5,5,10,0.7) 100%);
       z-index: 1;
     }
-
-    /* ===== Bolinhas neon roxas ===== */
     .orb {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 2;
-      filter: blur(40px);
-      opacity: 0.6;
-      animation: float 12s ease-in-out infinite;
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 2;
+      filter: blur(50px); opacity: 0.55; animation: float 14s ease-in-out infinite;
+      will-change: transform;
     }
-    .orb-1 { width: 300px; height: 300px; background: radial-gradient(circle, #a855f7, transparent 70%); top: 10%; left: 15%; animation-delay: 0s; }
-    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #7c3aed, transparent 70%); bottom: 5%; right: 10%; animation-delay: -4s; }
-    .orb-3 { width: 200px; height: 200px; background: radial-gradient(circle, #c084fc, transparent 70%); top: 60%; left: 5%; animation-delay: -8s; }
-    .orb-4 { width: 250px; height: 250px; background: radial-gradient(circle, #8b5cf6, transparent 70%); top: 20%; right: 20%; animation-delay: -2s; }
-
+    .orb-1 { width: 280px; height: 280px; background: radial-gradient(circle, #a855f7, transparent 70%); top: 8%; left: 10%; }
+    .orb-2 { width: 360px; height: 360px; background: radial-gradient(circle, #7c3aed, transparent 70%); bottom: 8%; right: 8%; animation-delay: -4s; }
+    .orb-3 { width: 200px; height: 200px; background: radial-gradient(circle, #c084fc, transparent 70%); top: 60%; left: 3%; animation-delay: -8s; }
+    .orb-4 { width: 240px; height: 240px; background: radial-gradient(circle, #8b5cf6, transparent 70%); top: 15%; right: 15%; animation-delay: -2s; }
     @keyframes float {
       0%, 100% { transform: translate(0, 0) scale(1); }
-      33%      { transform: translate(40px, -30px) scale(1.1); }
-      66%      { transform: translate(-30px, 40px) scale(0.95); }
+      33%      { transform: translate(35px, -25px) scale(1.08); }
+      66%      { transform: translate(-25px, 35px) scale(0.95); }
     }
-
-    /* ===== Partículas ===== */
-    .particles { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
+    .particles { position: fixed; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
     .particle {
-      position: absolute;
-      width: 4px; height: 4px;
-      background: #c084fc;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7;
-      animation: rise linear infinite;
-      opacity: 0;
+      position: absolute; background: #c084fc; border-radius: 50%;
+      box-shadow: 0 0 8px #a855f7, 0 0 16px #a855f7;
+      animation: rise linear infinite; opacity: 0;
     }
     @keyframes rise {
-      0%   { transform: translateY(100vh); opacity: 0; }
+      0%   { transform: translateY(105vh); opacity: 0; }
       10%  { opacity: 1; }
       90%  { opacity: 1; }
       100% { transform: translateY(-10vh); opacity: 0; }
     }
-
-    /* ===== Card ===== */
     .card {
-      position: relative;
-      z-index: 10;
-      background: rgba(15, 15, 25, 0.65);
+      position: relative; z-index: 10;
+      background: rgba(15, 15, 25, 0.72);
       border: 1px solid rgba(168, 85, 247, 0.35);
       border-radius: 24px;
-      padding: 56px 48px;
-      max-width: 460px;
-      width: 90%;
+      padding: 48px 40px;
+      max-width: 440px; width: 100%;
       text-align: center;
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       box-shadow:
-        0 0 0 1px rgba(168, 85, 247, 0.1),
-        0 20px 60px rgba(124, 58, 237, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        0 0 0 1px rgba(168, 85, 247, 0.08),
+        0 24px 64px rgba(124, 58, 237, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
       animation: cardIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     @keyframes cardIn {
-      0%   { opacity: 0; transform: translateY(30px) scale(0.95); }
+      0%   { opacity: 0; transform: translateY(30px) scale(0.96); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
     .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 10%; right: 10%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #a855f7, transparent);
-      border-radius: 50%;
+      content: ''; position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--purple), transparent);
     }
-
-    /* ===== Logo (usa logo.png da mesma pasta) ===== */
     .logo-wrapper {
-      width: 110px; height: 110px;
-      margin: 0 auto 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 110px; height: 110px; margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
       position: relative;
     }
     .logo-wrapper::after {
-      content: '';
-      position: absolute;
-      inset: -8px;
-      border-radius: 50%;
+      content: ''; position: absolute; inset: -8px; border-radius: 50%;
       background: radial-gradient(circle, rgba(168, 85, 247, 0.5), transparent 70%);
-      filter: blur(20px);
-      z-index: -1;
+      filter: blur(20px); z-index: -1;
       animation: pulse 3s ease-in-out infinite;
     }
     @keyframes pulse {
       0%, 100% { opacity: 0.5; transform: scale(1); }
-      50%      { opacity: 1; transform: scale(1.08); }
+      50%      { opacity: 0.9; transform: scale(1.1); }
     }
     .logo-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.7))
-              drop-shadow(0 0 40px rgba(168, 85, 247, 0.4));
+      width: 100%; height: 100%; object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.7)) drop-shadow(0 0 40px rgba(168, 85, 247, 0.4));
       animation: logoFloat 4s ease-in-out infinite;
     }
     @keyframes logoFloat {
       0%, 100% { transform: translateY(0); }
       50%      { transform: translateY(-6px); }
     }
-
-    /* ===== Título ===== */
     h1 {
-      font-size: 30px;
-      font-weight: 800;
-      margin-bottom: 6px;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #fff 30%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 32px; font-weight: 900; margin-bottom: 6px; letter-spacing: -1px;
+      background: linear-gradient(135deg, #fff 30%, var(--purple-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .brand-sub {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #a855f7;
-      margin-bottom: 24px;
-      opacity: 0.85;
+      display: block; font-size: 11px; font-weight: 700;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 26px; opacity: 0.85;
     }
-
-    .sub {
-      color: #a0a0b8;
-      font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 36px;
-    }
-    .sub strong { color: #c084fc; font-weight: 600; }
-
-    /* ===== Botão ===== */
+    .sub { color: #a0a0b8; font-size: 15px; line-height: 1.6; margin-bottom: 32px; }
+    .sub strong { color: var(--purple-light); font-weight: 600; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
-      padding: 18px 24px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      width: 100%; padding: 18px 24px;
       background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-      color: #fff;
-      border: none;
-      border-radius: 14px;
-      font-size: 16px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      text-decoration: none;
+      color: #fff; border: none; border-radius: 14px;
+      font-size: 16px; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow:
-        0 8px 24px rgba(124, 58, 237, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      position: relative; overflow: hidden;
+      -webkit-user-select: none; user-select: none;
     }
     .btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
-      transform: translateX(-100%);
-      transition: transform 0.6s;
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.25), transparent);
+      transform: translateX(-100%); transition: transform 0.7s;
     }
-    .btn:hover::before { transform: translateX(100%); }
+    .btn:hover::before, .btn:active::before { transform: translateX(100%); }
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow:
-        0 12px 32px rgba(124, 58, 237, 0.6),
-        0 0 40px rgba(168, 85, 247, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: 0 12px 32px rgba(124, 58, 237, 0.6), 0 0 40px rgba(168, 85, 247, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
-    .btn:active { transform: translateY(0); }
-    .btn svg { filter: drop-shadow(0 0 6px rgba(255,255,255,0.4)); }
-
-    /* ===== Footer ===== */
-    .footer {
-      margin-top: 28px;
-      font-size: 12px;
-      color: #55556a;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .footer span { color: #a855f7; font-weight: 600; }
-
-    /* ===== Erro ===== */
+    .btn:active { transform: translateY(0) scale(0.98); }
+    .footer { margin-top: 26px; font-size: 11px; color: #55556a; letter-spacing: 1px; text-transform: uppercase; }
+    .footer span { color: var(--purple); font-weight: 700; }
     .error {
       background: rgba(220, 38, 38, 0.15);
       border: 1px solid rgba(220, 38, 38, 0.5);
       color: #fca5a5;
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-size: 13px;
-      margin-bottom: 24px;
+      padding: 12px 16px; border-radius: 12px;
+      font-size: 13px; margin-bottom: 20px;
       backdrop-filter: blur(10px);
     }
-
     @media (max-width: 480px) {
-      .card { padding: 40px 28px; border-radius: 20px; }
-      h1 { font-size: 24px; }
-      .logo-wrapper { width: 88px; height: 88px; }
-      .orb-1, .orb-2, .orb-3, .orb-4 { filter: blur(50px); }
+      body { padding: 16px; }
+      .card { padding: 40px 24px; border-radius: 20px; }
+      h1 { font-size: 26px; }
+      .brand-sub { font-size: 10px; letter-spacing: 3px; margin-bottom: 20px; }
+      .logo-wrapper { width: 90px; height: 90px; margin-bottom: 20px; }
+      .sub { font-size: 14px; margin-bottom: 26px; }
+      .btn { padding: 16px 20px; font-size: 15px; }
+      .orb-1, .orb-2, .orb-3, .orb-4 { filter: blur(60px); }
+    }
+    @media (max-width: 360px) {
+      .card { padding: 32px 20px; }
+      h1 { font-size: 22px; }
+      .logo-wrapper { width: 76px; height: 76px; }
     }
   </style>
 </head>
 <body>
   <div class="banner-bg"></div>
   <div class="banner-overlay"></div>
-
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
   <div class="orb orb-4"></div>
-
   <div class="particles" id="particles"></div>
 
   <div class="card">
@@ -287,15 +206,18 @@
 
   <script>
     const particlesContainer = document.getElementById('particles');
-    const particleCount = 30;
+    const isMobile = window.innerWidth < 600;
+    const particleCount = isMobile ? 18 : 30;
 
     for (let i = 0; i < particleCount; i++) {
       const p = document.createElement('div');
       p.className = 'particle';
+      const size = Math.random() * 3 + 2;
       p.style.left = Math.random() * 100 + '%';
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
       p.style.animationDuration = (Math.random() * 10 + 8) + 's';
       p.style.animationDelay = (Math.random() * 10) + 's';
-      p.style.width = p.style.height = (Math.random() * 3 + 2) + 'px';
       p.style.opacity = Math.random() * 0.7 + 0.3;
       particlesContainer.appendChild(p);
     }
@@ -308,7 +230,7 @@
         no_code: 'Código de autorização não recebido.',
         acesso_negado: 'Você negou a autorização.',
         codigo_invalido: 'Código de autorização inválido.',
-        falha_token: 'Falha ao validar sua conta.',
+        falha_token: 'Falha ao validar sua conta. Tente novamente.',
         auth_failed: 'Erro na autenticação. Tente novamente.',
         erro_servidor: 'Erro interno. Tente novamente.',
       };
